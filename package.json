@@ -1,0 +1,19 @@
+{
+    "name": "fdsfb",
+    "version": "1.0.0",
+    "description": "this is mini project based backend code",
+    "main": "index.js",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "crypto-js": "^4.1.1",
+        "express": "^4.17.1",
+        "firebase-admin": "^8.9.0",
+        "nodemon": "^2.0.2"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon index.js"
+    },
+    "author": "Abhinav and surendra",
+    "license": "ISC"
+}
