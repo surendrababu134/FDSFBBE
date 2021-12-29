@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use('/api/itemservice',require('./routes/itemRoutes'));
 app.use('/api/userservice',require('./routes/userRoutes'));
 app.use('/api/usersservice',require('./routes/usersRoutes'));
+app.use('/api/resturants',require('./routes/restuarants'));
 
 /**
 REstuarants
