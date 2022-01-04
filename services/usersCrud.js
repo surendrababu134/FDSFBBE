@@ -26,7 +26,7 @@ const itemOperation = {
             delete obj.confirmPassword;
             userRef.push(obj, (err) => {
             if (err) {
-                res.status(300).json({ msg: "User not created", error: err });
+                res.status(300).json({ msg: "User not created", failure:true, error: err });
             } else {
                 userRef.once('value',function(listdata){
                 let userDataValue = {};
@@ -42,7 +42,7 @@ const itemOperation = {
                         userDataValue = itemData;
                     }
                 });
-                res.status(200).json({ msg: "User created successfully.", data:userDataValue });
+                res.status(200).json({ msg: "User created successfully.", failure:false, data:userDataValue });
             });
         }
             });
@@ -56,7 +56,7 @@ const itemOperation = {
                 }
             });
             if(isUser){
-                res.status(200).json({ msg: "User already available." });
+                res.status(200).json({ msg: "User already available.", failure:true });
             }else{
                 var text = "";
                 for (var i = 0; i < 12; i++) {
@@ -71,7 +71,7 @@ const itemOperation = {
                 delete obj.confirmPassword;
                 userRef.push(obj, (err) => {
                 if (err) {
-                    res.status(300).json({ msg: "User not created", error: err });
+                    res.status(300).json({ msg: "User not created", failure:true, error: err });
                 } else {
 
                     userRef.once('value',function(listdata){
@@ -88,7 +88,7 @@ const itemOperation = {
                                 userDataValue = itemData;
                             }
                         });
-                        res.status(200).json({ msg: "User created successfully.", data:userDataValue });
+                        res.status(200).json({ msg: "User created successfully.", failure:false, data:userDataValue });
                     });
                 }
                 });
