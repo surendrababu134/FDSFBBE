@@ -117,15 +117,15 @@ const itemOperation = {
             var bytes = CryptoJS.AES.decrypt(userDataValue.password, userDataValue.passCode);
             var plaintext = bytes.toString(CryptoJS.enc.Utf8);
             if(userDataValue.userName === obj.userName && plaintext === obj.password){
-                res.status(200).json({ msg: "User found.", data:userDataValue });
+                res.status(200).json({ msg: "User found.",failure:false, data:userDataValue });
             }else{
-                res.status(200).json({ msg: "User not found." });
+                res.status(200).json({ msg: "User not found or Password doesn't match.",failure:true });
             }
         }else{
-            res.status(200).json({ msg: "User not found." });
+            res.status(200).json({ msg: "User not found.", failure:true });
         }
     }else{
-        res.status(200).json({ msg: "User not found." });
+        res.status(200).json({ msg: "User not found.",failure:true });
     }
     });
   },

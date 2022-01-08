@@ -16,10 +16,10 @@ const itemOperation={
             entry.once('value', snap => {
                 let dataItem = snap.val();
                 dataItem.key = resp.getKey()
-                res.status(200).json({"msg":"restuarant created sucessfully",data:dataItem});
+                res.status(200).json({"msg":"restuarant created sucessfully",failure:false,data:dataItem});
             })
         }).catch(err=>{
-            res.status(300).json({"msg":"Something went wrong","error":err});
+            res.status(300).json({"msg":"Something went wrong",failure:true,"error":err});
         })
     },
     createMenu(obj,res){
