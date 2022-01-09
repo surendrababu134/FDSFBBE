@@ -22,6 +22,18 @@ const itemOperation={
             res.status(300).json({"msg":"Something went wrong",failure:true,"error":err});
         })
     },
+    getResturant(obj,res){
+        restuarantRef.once('value',function(list){
+            let itemsList = [];
+            let itemObj = list.val();
+            Object.keys(list.val()).map((itemEle,index)=>{
+                itemObj[itemEle]["key"] = itemEle;
+                itemsList.push(itemObj[itemEle])
+            });
+            let filterItem = itemsList.filter(a=>a.userId===obj);
+            res.json({"msg":"completed",failure:false,"data":filterItem[0]})
+        })
+    },
     createMenu(obj,res){
         menuRef.push(obj,(err)=>{
             if(err){
@@ -57,15 +69,15 @@ const itemOperation={
         idItemRef.remove();
         res.json({"msg":"deleted item"})
     },
-    updateItem(data,res){
-        const entry = itemRef.child(data.key);
+    updateResturant(data,res){
+        const entry = restuarantRef.child(data.key);
         entry.once('value', snap => {
             let dataItem = snap.val();
             delete data.key;
             dataItem = {...dataItem,data}
             entry.update(data)
         })
-        res.json({"msg":"update Item"})
+        res.json({"msg":"update Item",failure:false,"data":data})
     }
 }
 
